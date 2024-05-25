@@ -2,9 +2,27 @@ package com.ControleFluxo.Exception;
 
 public class ParametrosInvalidosException extends Exception {
     int codigoErro;
+    String firstString;
+    String secunndString;
 
-    public ParametrosInvalidosException(int codeError){
-        this.codigoErro = codeError;
+    public ParametrosInvalidosException(String firstString, String secunndString){
+        this.firstString = firstString;
+        this.secunndString = secunndString;
+    }
+
+    private void verificarParametro(){
+        if (firstString.contains(".") || secunndString.contains(".")) {
+            codigoErro = 0;
+        }else if(firstString.isEmpty() || secunndString.isEmpty()){
+            codigoErro = 1;
+        }else if(firstString.matches(".*[a-zA-Z]+.*") || secunndString.matches(".*[a-zA-Z]+.*")){
+            codigoErro = 3;
+        }else{
+            int numFinal1 = Integer.parseInt(firstString);
+            int numFinal2 = Integer.parseInt(secunndString);
+        }
+            
+
     }
 
     public void notifyError(){
